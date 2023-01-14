@@ -144,7 +144,7 @@ class _VfsClient:
         _message = self._get_appointment_date(visa_centre, category, sub_category)
         logging.debug("Message: " + _message.text)
 
-        if len(_message.text) != 0 and _message.text != "No appointment slots are currently available" and _message.text != "Currently No slots are available for selected category, please confirm waitlist\nTerms and Conditions":
+        if len(_message.text) != 0 and "No appointment slots are currently available" not in _message.text and _message.text != "Currently No slots are available for selected category, please confirm waitlist\nTerms and Conditions":
             logging.info("Appointment slots available: {}".format(_message.text))
             ts = time.time()
             st = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
